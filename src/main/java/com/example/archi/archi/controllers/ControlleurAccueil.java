@@ -3,8 +3,7 @@ package com.example.archi.archi.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
-import com.example.archi.archi.businesslogic.salesforce.SalesforceConnection;
+import com.example.archi.archi.CRMClient.SalesforceConnection;
 
 
 @Controller
