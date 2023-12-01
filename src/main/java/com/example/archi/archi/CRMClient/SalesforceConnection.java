@@ -11,11 +11,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.example.archi.archi.model.standard.ModelTO;
+import com.example.archi.archi.tools.CRMDataConverter;
+import com.example.archi.archi.tools.SalesforceCRMDataConverterIMPL;
 import com.example.archi.archi.tools.SalesforceJSONHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
-public class SalesforceConnection implements Client< Map<String, Object>> {
+public class SalesforceConnection implements Client {
 	
 
 	private static final String LOGIN_URL = "services/oauth2/token";
@@ -83,7 +86,7 @@ public class SalesforceConnection implements Client< Map<String, Object>> {
 	    }
 	 
 	 @Override
-	 public Map<String, Object> getAllUsers() throws Exception {
+	 public List<ModelTO> getAllUsers() throws Exception {
 	        if (this._tokenAccess == null || this._tokenAccess.isEmpty()) {
 	            throw new IllegalStateException("Salesforce connection hasn't been set");
 	        }
@@ -114,9 +117,14 @@ public class SalesforceConnection implements Client< Map<String, Object>> {
 	        
 	        ObjectMapper mapper = new ObjectMapper();
 	        Map<String, Object> responseMap = mapper.readValue(response.toString(), HashMap.class);
+	        
+	        
 	        conn.disconnect();
+	        
+	        List<Map<String, Object>> records = (List<Map<String, Object>>) responseMap.get("records");
+	        CRMDataConverter<List<Map<String, Object>>> converter = new SalesforceCRMDataConverterIMPL();
 	        	
-	        return responseMap;
+	        return converter.convertDatas(records);
 	    }
 	 
 	 

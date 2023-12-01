@@ -1,10 +1,12 @@
 package com.example.archi.archi.CRMClient;
 
+import java.util.List;
 
+import com.example.archi.archi.model.standard.ModelTO;
 
-public  interface Client<T> {
+public  interface Client {
 	  	
-	public T getAllUsers() throws Exception;
+	public List<ModelTO> getAllUsers() throws Exception;
 	    
 	    
 	    
