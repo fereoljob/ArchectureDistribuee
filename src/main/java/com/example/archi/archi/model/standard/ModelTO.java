@@ -17,6 +17,7 @@ public class ModelTO {
     private String _city = DEFAULT_FIELD;
     private String _country = DEFAULT_FIELD;
     private String _company = DEFAULT_FIELD;
+    private String _creationDate = DEFAULT_FIELD;
     private String _state = DEFAULT_FIELD;
     
     public ModelTO() {
@@ -26,6 +27,20 @@ public class ModelTO {
 	
 	
 	
+	public String get_creationDate() {
+		return _creationDate;
+	}
+
+
+
+
+	public void set_creationDate(String _creationDate) {
+		this._creationDate = _creationDate;
+	}
+
+
+
+
 	public String get_firstName() {
 		return _firstName;
 	}
@@ -119,6 +134,7 @@ public class ModelTO {
 	            ", _country='" + _country + '\'' +
 	            ", _company='" + _company + '\'' +
 	            ", _state='" + _state + '\'' +
+	             ", creationDate='" + _creationDate + '\'' +
 	            '}';
 	
 	}

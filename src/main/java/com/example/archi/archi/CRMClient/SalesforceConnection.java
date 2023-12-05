@@ -4,9 +4,16 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -85,16 +92,92 @@ public class SalesforceConnection implements Client {
 	        return responseMap;
 	    }
 	 
+	 
+	 
 	 @Override
-	 public List<ModelTO> getAllUsers() throws Exception {
-	        if (this._tokenAccess == null || this._tokenAccess.isEmpty()) {
+	 public List<ModelTO> getAllUsers() {
+	      
+	        String query = "SELECT+Id,FirstName,LastName,Email,Phone,Username,CreatedDate,Street,City,State,PostalCode,Country,CompanyName+FROM+User";
+	        Map<String, Object> responseMap = executeQuery(query);
+
+	        List<Map<String, Object>> records = (List<Map<String, Object>>) responseMap.get("records");
+	        List<ModelTO> result = new ArrayList<ModelTO>();
+	        CRMDataConverter<Map<String, Object>> converter = new SalesforceCRMDataConverterIMPL();
+	        if (records != null && !records.isEmpty()) {
+		        for (Map<String, Object> user : records) {
+		        	result.add(converter.convertDatas(user));
+		        }
+		    } 
+	        	
+	        return result;
+	    }
+	 
+	 
+	 
+	 
+	 
+	 
+
+		@Override
+		public List<ModelTO> findLeadsByDate(String startDate, String endDate)  {
+
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+		    // Format the startDate and endDate for Salesforce query
+		    String startDateStr = "";
+		    String endDateStr ="" ;
+			try {
+				startDateStr = dateFormat.format(dateFormat.parse(startDate + "T00:00:00Z"));
+			
+				endDateStr = dateFormat.format(dateFormat.parse(endDate + "T23:59:59Z"));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		    String query = "SELECT Id,FirstName,LastName,Email,Phone,Username,CreatedDate,Street,City,State,PostalCode,Country,CompanyName " +
+		                   "FROM User " +
+		                   "WHERE CreatedDate >= " + startDateStr + " AND CreatedDate <= " + endDateStr;
+		    try {
+				 query = URLEncoder.encode(query, StandardCharsets.UTF_8.toString());
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		     Map<String, Object> responseMap = executeQuery(query);
+
+
+		     List<Map<String, Object>> records = (List<Map<String, Object>>) responseMap.get("records");
+		     List<ModelTO> result = new ArrayList<ModelTO>();
+		     CRMDataConverter<Map<String, Object>> converter = new SalesforceCRMDataConverterIMPL();
+		     if (records != null && !records.isEmpty()) {
+		         for (Map<String, Object> user : records) {
+		             result.add(converter.convertDatas(user));
+		         }
+		     }
+
+		     return result;
+		}
+
+		@Override
+		public List<ModelTO> findLeads(double lowAnnualRevenue, double highAnnualRevenue, String state) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		 
+	 
+	 
+	 
+	 
+	 
+	 
+	 public Map<String, Object> executeQuery(String query) {
+		 
+		  if (this._tokenAccess == null || this._tokenAccess.isEmpty()) {
 	            throw new IllegalStateException("Salesforce connection hasn't been set");
 	        }
-	        String query = "SELECT+Id,FirstName,LastName,Email,Phone,Username,CreatedDate,Street,City,State,PostalCode,Country,CompanyName+FROM+User";
-
-
-
-	        URL url = new URL(DOMAIN_NAME + QUERY_URL+ "query?q=" + query);
+		  URL url;
+		try {
+			url = new URL(DOMAIN_NAME + QUERY_URL+ "query?q=" + query);
+		
 	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 	        conn.setRequestMethod("GET");
 	        conn.setRequestProperty("Authorization", "Bearer " + this._tokenAccess);
@@ -118,14 +201,20 @@ public class SalesforceConnection implements Client {
 	        ObjectMapper mapper = new ObjectMapper();
 	        Map<String, Object> responseMap = mapper.readValue(response.toString(), HashMap.class);
 	        
-	        
 	        conn.disconnect();
+	        return responseMap;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	        
-	        List<Map<String, Object>> records = (List<Map<String, Object>>) responseMap.get("records");
-	        CRMDataConverter<List<Map<String, Object>>> converter = new SalesforceCRMDataConverterIMPL();
-	        	
-	        return converter.convertDatas(records);
-	    }
+		 
+	 }
+	 
+	 
+	 
+	 
 	 
 	 
 	 public String getResponse(HttpURLConnection conn, int responseCode) throws IOException {
@@ -137,7 +226,7 @@ public class SalesforceConnection implements Client {
          }
          return response.toString();
 	 }
-	 
+
 	
 
 

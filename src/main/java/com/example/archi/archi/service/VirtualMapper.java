@@ -32,7 +32,7 @@ public class VirtualMapper {
     
     public List<VirtualLeadDTO> convertFromSalesforce() throws Exception{
     		Client salesforceClient = this._clientFactory.createClient(ClientType.SALESFORCE);
-    		for(ModelTO model :salesforceClient.getAllUsers()) {
+    		for(ModelTO model :salesforceClient.findLeadsByDate("2023-11-14","2023-11-27")) {
     			System.out.println(model.toString());
     		}
 		    
