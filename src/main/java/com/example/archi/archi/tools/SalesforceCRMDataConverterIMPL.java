@@ -30,7 +30,6 @@ public class SalesforceCRMDataConverterIMPL implements CRMDataConverter
 		model.set_country((String) dataType.get("Country"));
 		model.set_company((String) dataType.get("CompanyName"));
 		model.set_state((String) dataType.get("State"));
-		model.set_creationDate((String) dataType.get("CreatedDate"));
 		
 		return model;
 	}

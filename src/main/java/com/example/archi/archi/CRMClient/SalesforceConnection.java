@@ -160,7 +160,32 @@ public class SalesforceConnection implements Client {
 		@Override
 		public List<ModelTO> findLeads(double lowAnnualRevenue, double highAnnualRevenue, String state) {
 			// TODO Auto-generated method stub
-			return null;
+			
+		    String query = "SELECT Id,FirstName,LastName,Email,Phone,Username,CreatedDate,Street,City,State,PostalCode,Country,CompanyName " +
+		                   "FROM User " +
+		                   "WHERE (revenue__c >= " + lowAnnualRevenue + " AND revenue__c <= " + highAnnualRevenue+")";
+		   if(!state.equals("") && !state.equals(null)) {
+			   query += " AND State = '"+state+"'";
+		   }
+		   try {
+				 query = URLEncoder.encode(query, StandardCharsets.UTF_8.toString());
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		    Map<String, Object> responseMap = executeQuery(query);
+
+
+		     List<Map<String, Object>> records = (List<Map<String, Object>>) responseMap.get("records");
+		     List<ModelTO> result = new ArrayList<ModelTO>();
+		     CRMDataConverter<Map<String, Object>> converter = new SalesforceCRMDataConverterIMPL();
+		     if (records != null && !records.isEmpty()) {
+		         for (Map<String, Object> user : records) {
+		             result.add(converter.convertDatas(user));
+		         }
+		     }
+
+		     return result;
 		}
 		 
 	 
