@@ -1,30 +1,30 @@
 package com.example.archi.archi.CRMClient;
 
-import java.io.IOException;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.example.archi.archi.model.standard.ModelTO;
+import org.springframework.stereotype.Component;
+
+import com.example.archi.archi.model.ModelTO;
 import com.example.archi.archi.tools.CRMDataConverter;
 import com.example.archi.archi.tools.SalesforceCRMDataConverterIMPL;
 import com.example.archi.archi.tools.SalesforceJSONHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
+@Component
 public class SalesforceConnection implements Client {
 	
 

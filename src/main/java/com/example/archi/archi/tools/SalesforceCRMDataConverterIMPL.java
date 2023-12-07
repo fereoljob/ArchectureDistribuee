@@ -6,7 +6,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
-import com.example.archi.archi.model.standard.ModelTO;
+import com.example.archi.archi.model.ModelTO;
 
 @Component("salesforceConverter")
 public class SalesforceCRMDataConverterIMPL implements CRMDataConverter

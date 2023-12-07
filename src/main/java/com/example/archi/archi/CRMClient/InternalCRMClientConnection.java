@@ -11,12 +11,13 @@ import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
-import com.example.archi.archi.model.standard.ModelTO;
+import com.example.archi.archi.model.ModelTO;
 import com.example.archi.archi.thriftService.InternalCRMService;
 import com.example.archi.archi.thriftService.InternalLeadDto;
 import com.example.archi.archi.tools.CRMDataConverter;
-
+@Component
 public class InternalCRMClientConnection implements Client {
     @Autowired
     @Qualifier("internalConverter")

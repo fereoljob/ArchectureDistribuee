@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.example.archi.archi.model.standard.ModelTO;
+import com.example.archi.archi.model.ModelTO;
 import com.example.archi.archi.thriftService.InternalLeadDto;
 @Component("internalConverter")
 public class InternalCRMDataConverter implements CRMDataConverter<InternalLeadDto> {

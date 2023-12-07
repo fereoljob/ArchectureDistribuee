@@ -1,4 +1,4 @@
-package com.example.archi.archi.model.standard;
+package com.example.archi.archi.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,8 +7,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class ModelTO {
-	private String firstName;
+public class VirtualLeadDTO {
+    private String firstName;
     private String lastName;
     private double annualRevenue;
     private String phone;
@@ -20,8 +20,7 @@ public class ModelTO {
     private String creationDate;
     private String state;
     
-
-	@Override
+    @Override
 	public String toString() {
 	    return "ModelTO{" +
 	            "_firstName='" + firstName + '\'' +
@@ -38,4 +37,5 @@ public class ModelTO {
 	            '}';
 	
 	}
+    
 }

@@ -1,9 +1,10 @@
 package com.example.archi.archi.CRMClient;
 
-import java.util.Date;
 import java.util.List;
 
-import com.example.archi.archi.model.standard.ModelTO;
+import org.springframework.stereotype.Component;
+
+import com.example.archi.archi.model.ModelTO;
 
 public  interface Client {
 	  	
