@@ -14,7 +14,7 @@ public class MarcController {
     @GetMapping
     public String accueil() throws Exception {
         System.out.println("Begin");
-        VirtualCRMService.Iface VCRM = new VirtualCRMServiceIMPL();
+        VirtualCRMService VCRM = new VirtualCRMServiceIMPL();
         VCRM.findLeads(0, 0);
         System.out.println("End");
         return "welcome";

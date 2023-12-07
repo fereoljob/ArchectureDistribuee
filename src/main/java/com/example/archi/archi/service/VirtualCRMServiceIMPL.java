@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.example.archi.archi.model.apache.VirtualLeadDTO;
 
 @Service
-public class VirtualCRMServiceIMPL implements VirtualCRMService.Iface{	
+public class VirtualCRMServiceIMPL implements  VirtualCRMService{	
 	
 	private VirtualMapper _virtualMapper;
 	public VirtualCRMServiceIMPL() throws IOException{
