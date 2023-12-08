@@ -1,4 +1,4 @@
-namespace java com.example.archi.archi.thriftService
+namespace java com.example.infra.tools.thriftService
 
 struct InternalLeadDto {
     1: string firstName
