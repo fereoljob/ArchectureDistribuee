@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.example.archi.archi.model.ModelTO;
@@ -34,6 +36,9 @@ public class SalesforceConnection implements Client {
 	private static final String GRANT_TYPE = "password";
 	private SalesforceJSONHandler _config;
 	private String _tokenAccess;
+	@Autowired
+	@Qualifier("salesforceConverter")
+	private CRMDataConverter<Map<String, Object>> converter;
 	
 	 public SalesforceConnection() throws Exception {
 		 this._config = SalesforceJSONHandler.loadConfig("jsonFiles/SalesforceUser.json");
@@ -101,8 +106,7 @@ public class SalesforceConnection implements Client {
 	        Map<String, Object> responseMap = executeQuery(query);
 
 	        List<Map<String, Object>> records = (List<Map<String, Object>>) responseMap.get("records");
-	        List<ModelTO> result = new ArrayList<ModelTO>();
-	        CRMDataConverter<Map<String, Object>> converter = new SalesforceCRMDataConverterIMPL();
+	        List<ModelTO> result = new ArrayList<ModelTO>();    
 	        if (records != null && !records.isEmpty()) {
 		        for (Map<String, Object> user : records) {
 		        	result.add(converter.convertDatas(user));
@@ -146,8 +150,7 @@ public class SalesforceConnection implements Client {
 
 
 		     List<Map<String, Object>> records = (List<Map<String, Object>>) responseMap.get("records");
-		     List<ModelTO> result = new ArrayList<ModelTO>();
-		     CRMDataConverter<Map<String, Object>> converter = new SalesforceCRMDataConverterIMPL();
+		     List<ModelTO> result = new ArrayList<ModelTO>();    
 		     if (records != null && !records.isEmpty()) {
 		         for (Map<String, Object> user : records) {
 		             result.add(converter.convertDatas(user));
@@ -178,7 +181,6 @@ public class SalesforceConnection implements Client {
 
 		     List<Map<String, Object>> records = (List<Map<String, Object>>) responseMap.get("records");
 		     List<ModelTO> result = new ArrayList<ModelTO>();
-		     CRMDataConverter<Map<String, Object>> converter = new SalesforceCRMDataConverterIMPL();
 		     if (records != null && !records.isEmpty()) {
 		         for (Map<String, Object> user : records) {
 		             result.add(converter.convertDatas(user));
