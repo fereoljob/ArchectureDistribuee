@@ -1,4 +1,4 @@
-package com.example.archi.archi.CRMClient;
+package com.example.archi.infra.tools.CRMClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import com.example.archi.archi.model.ModelTO;
-import com.example.archi.archi.thriftService.InternalCRMService;
-import com.example.archi.archi.thriftService.InternalLeadDto;
-import com.example.archi.archi.tools.CRMDataConverter;
+import com.example.archi.domain.ModelTO;
+import com.example.archi.infra.tools.Converter.CRMDataConverter;
+import com.example.archi.infra.tools.thriftService.InternalCRMService;
+import com.example.archi.infra.tools.thriftService.InternalLeadDto;
 @Component
-public class InternalCRMClientConnection implements Client {
+public class InternalCRMClientConnection implements CRMClient {
     @Autowired
     @Qualifier("internalConverter")
     private CRMDataConverter<InternalLeadDto> converter; 

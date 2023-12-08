@@ -1,8 +1,8 @@
-package com.example.archi.archi.model;
+package com.example.archi.domain;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
 @AllArgsConstructor

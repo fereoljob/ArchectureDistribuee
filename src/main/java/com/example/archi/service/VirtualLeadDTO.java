@@ -1,4 +1,6 @@
-package com.example.archi.archi.model;
+package com.example.archi.service;
+
+import com.example.archi.infra.tools.geoLocalisationClient.GeographicPointTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,6 +21,7 @@ public class VirtualLeadDTO {
     private String company;
     private String creationDate;
     private String state;
+	private GeographicPointTO geo;
     
     @Override
 	public String toString() {

@@ -1,9 +1,9 @@
-package com.example.archi.archi.controllers;
+package com.example.archi.infra.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.example.archi.archi.CRMClient.SalesforceConnection;
+import com.example.archi.infra.tools.CRMClient.SalesforceConnection;
 
 
 @Controller

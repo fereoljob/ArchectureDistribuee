@@ -1,4 +1,4 @@
-package com.example.archi.archi.model;
+package com.example.archi.infra.tools.geoLocalisationClient;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

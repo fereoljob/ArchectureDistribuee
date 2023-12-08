@@ -1,14 +1,9 @@
-package com.example.archi.archi.geoLocalisationClient;
+package com.example.archi.infra.tools.geoLocalisationClient;
 
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
-
-import com.example.archi.archi.model.GeographicPointTO;
 
 
 @Component

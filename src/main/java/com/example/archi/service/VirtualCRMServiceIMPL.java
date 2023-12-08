@@ -1,24 +1,21 @@
-package com.example.archi.archi.service;
+package com.example.archi.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.thrift.TException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.archi.archi.CRMClient.Client;
-import com.example.archi.archi.geoLocalisationClient.GeoLocalisationClient;
-import com.example.archi.archi.model.ModelTO;
-import com.example.archi.archi.model.VirtualLeadDTO;
+import com.example.archi.infra.tools.CRMClient.CRMClient;
+import com.example.archi.infra.tools.geoLocalisationClient.GeoLocalisationClient;
 
 @Service
 public class VirtualCRMServiceIMPL implements  VirtualCRMService{	
 	
-	private List<Client> listClients;
+	private List<CRMClient> listClients;
 	private GeoLocalisationClient geoClient;
-	public VirtualCRMServiceIMPL(List<Client> listCli,GeoLocalisationClient geoCli) throws IOException{
+	public VirtualCRMServiceIMPL(List<CRMClient> listCli,GeoLocalisationClient geoCli) throws IOException{
 		listClients = listCli;
 		geoClient = geoCli;
 	}
@@ -26,7 +23,7 @@ public class VirtualCRMServiceIMPL implements  VirtualCRMService{
 	@Override
 	public List<VirtualLeadDTO> findLeads(double lowAnnualRevenue, double highAnnualRevenue,String state) {
 		List<VirtualLeadDTO> listClientDto = new ArrayList<>();
-		for(Client c : listClients){
+		for(CRMClient c : listClients){
 			(c.findLeads(lowAnnualRevenue, highAnnualRevenue, state)).forEach( elem -> {listClientDto.add(VirtualMapper.fromModelToVirtual(elem));});
 
 		}

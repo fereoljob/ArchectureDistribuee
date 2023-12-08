@@ -1,10 +1,8 @@
-package com.example.archi.archi.service;
+package com.example.archi.service;
 
 import java.util.List;
 
 import org.apache.thrift.TException;
-
-import com.example.archi.archi.model.VirtualLeadDTO;
 
 public interface VirtualCRMService {
 

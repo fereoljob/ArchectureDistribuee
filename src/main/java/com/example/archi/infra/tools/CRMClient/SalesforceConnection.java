@@ -1,4 +1,4 @@
-package com.example.archi.archi.CRMClient;
+package com.example.archi.infra.tools.CRMClient;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,14 +20,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import com.example.archi.archi.model.ModelTO;
-import com.example.archi.archi.tools.CRMDataConverter;
-import com.example.archi.archi.tools.SalesforceCRMDataConverterIMPL;
-import com.example.archi.archi.tools.SalesforceJSONHandler;
+import com.example.archi.domain.ModelTO;
+import com.example.archi.infra.tools.SalesforceJSONHandler;
+import com.example.archi.infra.tools.Converter.CRMDataConverter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
-public class SalesforceConnection implements Client {
+public class SalesforceConnection implements CRMClient {
 	
 
 	private static final String LOGIN_URL = "services/oauth2/token";

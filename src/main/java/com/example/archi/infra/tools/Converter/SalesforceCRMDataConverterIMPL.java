@@ -1,14 +1,12 @@
-package com.example.archi.archi.tools;
+package com.example.archi.infra.tools.Converter;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
-import com.example.archi.archi.model.ModelTO;
+import com.example.archi.domain.ModelTO;
 
 @Component("salesforceConverter")
 public class SalesforceCRMDataConverterIMPL implements CRMDataConverter

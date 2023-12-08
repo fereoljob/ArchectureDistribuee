@@ -1,12 +1,10 @@
-package com.example.archi.archi.CRMClient;
+package com.example.archi.infra.tools.CRMClient;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
+import com.example.archi.domain.ModelTO;
 
-import com.example.archi.archi.model.ModelTO;
-
-public  interface Client {
+public  interface CRMClient {
 	  	
 	public List<ModelTO> getAllUsers() throws Exception;
 	public List<ModelTO> findLeadsByDate(String startDate, String endDate);

@@ -1,11 +1,9 @@
-package com.example.archi.archi.tools;
-
-import java.util.List;
+package com.example.archi.infra.tools.Converter;
 
 import org.springframework.stereotype.Component;
 
-import com.example.archi.archi.model.ModelTO;
-import com.example.archi.archi.thriftService.InternalLeadDto;
+import com.example.archi.domain.ModelTO;
+import com.example.archi.infra.tools.thriftService.InternalLeadDto;
 @Component("internalConverter")
 public class InternalCRMDataConverter implements CRMDataConverter<InternalLeadDto> {
 
