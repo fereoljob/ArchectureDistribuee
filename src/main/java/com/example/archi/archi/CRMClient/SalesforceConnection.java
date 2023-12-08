@@ -97,7 +97,7 @@ public class SalesforceConnection implements Client {
 	 @Override
 	 public List<ModelTO> getAllUsers() {
 	      
-	        String query = "SELECT+Id,FirstName,LastName,Email,Phone,Username,CreatedDate,Street,City,State,PostalCode,Country,CompanyName+FROM+User";
+	        String query = "SELECT+Id,FirstName,LastName,Email,Phone,Username,CreatedDate,Street,City,State,PostalCode,Country,CompanyName,revenue__c+FROM+User";
 	        Map<String, Object> responseMap = executeQuery(query);
 
 	        List<Map<String, Object>> records = (List<Map<String, Object>>) responseMap.get("records");
@@ -133,7 +133,7 @@ public class SalesforceConnection implements Client {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		    String query = "SELECT Id,FirstName,LastName,Email,Phone,Username,CreatedDate,Street,City,State,PostalCode,Country,CompanyName " +
+		    String query = "SELECT Id,FirstName,LastName,Email,Phone,Username,CreatedDate,Street,City,State,PostalCode,Country,CompanyName,revenue__c " +
 		                   "FROM User " +
 		                   "WHERE CreatedDate >= " + startDateStr + " AND CreatedDate <= " + endDateStr;
 		    try {
@@ -161,7 +161,7 @@ public class SalesforceConnection implements Client {
 		public List<ModelTO> findLeads(double lowAnnualRevenue, double highAnnualRevenue, String state) {
 			// TODO Auto-generated method stub
 			
-		    String query = "SELECT Id,FirstName,LastName,Email,Phone,Username,CreatedDate,Street,City,State,PostalCode,Country,CompanyName " +
+		    String query = "SELECT Id,FirstName,LastName,Email,Phone,Username,CreatedDate,Street,City,State,PostalCode,Country,CompanyName,revenue__c " +
 		                   "FROM User " +
 		                   "WHERE (revenue__c >= " + lowAnnualRevenue + " AND revenue__c <= " + highAnnualRevenue+")";
 		   if(!state.equals("") && !state.equals(null)) {

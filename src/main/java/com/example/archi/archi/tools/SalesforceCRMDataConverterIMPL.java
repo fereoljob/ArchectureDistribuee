@@ -19,7 +19,7 @@ public class SalesforceCRMDataConverterIMPL implements CRMDataConverter
 	@Override
 	public ModelTO convertDatas(Map<String, Object> dataType) {
 		ModelTO model = new ModelTO((String) dataType.get("FirstName"), (String) dataType.get("LastName"),
-		 1000L, (String) dataType.get("Phone"), (String) dataType.get("Street"), (String) dataType.get("PostalCode"),
+		 (double)dataType.get("revenue__c"), (String) dataType.get("Phone"), (String) dataType.get("Street"), (String) dataType.get("PostalCode"),
 		  (String) dataType.get("City"), (String) dataType.get("Country"), (String) dataType.get("CompanyName"),
 		   (String)dataType.get("CreatedDate"), (String) dataType.get("State"));
 		
