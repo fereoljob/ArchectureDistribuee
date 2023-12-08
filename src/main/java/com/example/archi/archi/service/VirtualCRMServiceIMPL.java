@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.thrift.TException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.archi.archi.CRMClient.Client;
+import com.example.archi.archi.geoLocalisationClient.GeoLocalisationClient;
 import com.example.archi.archi.model.ModelTO;
 import com.example.archi.archi.model.VirtualLeadDTO;
 
@@ -15,9 +17,10 @@ import com.example.archi.archi.model.VirtualLeadDTO;
 public class VirtualCRMServiceIMPL implements  VirtualCRMService{	
 	
 	private List<Client> listClients;
-
-	public VirtualCRMServiceIMPL(List<Client> listCli) throws IOException{
+	private GeoLocalisationClient geoClient;
+	public VirtualCRMServiceIMPL(List<Client> listCli,GeoLocalisationClient geoCli) throws IOException{
 		listClients = listCli;
+		geoClient = geoCli;
 	}
 	
 	@Override
@@ -27,6 +30,11 @@ public class VirtualCRMServiceIMPL implements  VirtualCRMService{
 			(c.findLeads(lowAnnualRevenue, highAnnualRevenue, state)).forEach( elem -> {listClientDto.add(VirtualMapper.fromModelToVirtual(elem));});
 
 		}
+		for(VirtualLeadDTO cli : listClientDto) {
+			System.out.println("Street : " +cli.getStreet());
+			System.out.println(geoClient.extractLongAndLat(cli.getStreet()));
+		}
+		
 		return listClientDto;
 	}
 
