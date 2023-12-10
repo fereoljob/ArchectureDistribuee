@@ -28,8 +28,9 @@ public class VirtualCRMServiceIMPL implements  VirtualCRMService{
 
 		}
 		for(VirtualLeadDTO cli : listClientDto) {
-			System.out.println("Street : " +cli.getStreet());
-			System.out.println(geoClient.extractLongAndLat(cli.getStreet()));
+			String address = cli.getStreet() + " " + cli.getCity() + " " + cli.getCountry();
+			VirtualMapper.searchForCoordinates(cli, geoClient.extractLongAndLat(address));
+			
 		}
 		
 		return listClientDto;

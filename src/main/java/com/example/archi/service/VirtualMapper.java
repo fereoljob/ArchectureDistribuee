@@ -1,6 +1,7 @@
 package com.example.archi.service;
 
 import com.example.archi.domain.ModelTO;
+import com.example.archi.infra.tools.geoLocalisationClient.GeographicPointTO;
 
 
 public class VirtualMapper {
@@ -16,7 +17,13 @@ public class VirtualMapper {
     	
     }
   
-    
+    public static VirtualLeadDTO  searchForCoordinates(VirtualLeadDTO vLdto, GeographicPointTO geo) {
+    	vLdto.setGeo(geo);
+		return vLdto;
+		
+	   
+	
+}
     
     
 

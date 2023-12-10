@@ -37,6 +37,7 @@ public class VirtualLeadDTO {
 	            ", _company='" + company + '\'' +
 	            ", _state='" + state + '\'' +
 	             ", creationDate='" + creationDate + '\'' +
+	             ", Coordinates='" + geo + '\'' +
 	            '}';
 	
 	}
