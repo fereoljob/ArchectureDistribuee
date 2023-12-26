@@ -138,7 +138,7 @@ public class SalesforceConnection implements CRMClient {
 			}
 		    String query = "SELECT Id,FirstName,LastName,Email,Phone,Username,CreatedDate,Street,City,State,PostalCode,Country,CompanyName,revenue__c " +
 		                   "FROM User " +
-		                   "WHERE CreatedDate >= " + startDateStr + " AND CreatedDate <= " + endDateStr;
+		                   "WHERE (CreatedDate >= " + startDateStr + " AND CreatedDate <= " + endDateStr+")";
 		    try {
 				 query = URLEncoder.encode(query, StandardCharsets.UTF_8.toString());
 			} catch (UnsupportedEncodingException e) {

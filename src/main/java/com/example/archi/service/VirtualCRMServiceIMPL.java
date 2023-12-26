@@ -37,9 +37,20 @@ public class VirtualCRMServiceIMPL implements  VirtualCRMService{
 	}
 
 	@Override
-	public List<VirtualLeadDTO> findLeadsByDate(String startDate, String endDate) throws TException {
+	public List<VirtualLeadDTO> findLeadsByDate(String startDate, String endDate) {
 		// TODO Auto-generated method stub
-		return null;
+		List<VirtualLeadDTO> listClientDto = new ArrayList<>();
+		for(CRMClient c : listClients){
+			(c.findLeadsByDate(startDate, endDate)).forEach( elem -> {listClientDto.add(VirtualMapper.fromModelToVirtual(elem));});
+
+		}
+		for(VirtualLeadDTO cli : listClientDto) {
+			String address = cli.getStreet() + " " + cli.getCity() + " " + cli.getCountry();
+			VirtualMapper.searchForCoordinates(cli, geoClient.extractLongAndLat(address));
+			
+		}
+
+		return listClientDto;
 	}
 
 }

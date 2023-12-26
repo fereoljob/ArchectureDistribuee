@@ -24,9 +24,14 @@ public class SalesforceCRMDataConverterIMPL implements CRMDataConverter
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
 
         ZonedDateTime zonedDateTime = ZonedDateTime.parse(strDate, formatter);
+        
+        double revenue = -1;
+        if(dataType.get("revenue__c")!=null) {
+        	revenue = (double)dataType.get("revenue__c");
+        }
 		
 		ModelTO model = new ModelTO((String) dataType.get("FirstName"), (String) dataType.get("LastName"),
-		 (double)dataType.get("revenue__c"), (String) dataType.get("Phone"), (String) dataType.get("Street"), (String) dataType.get("PostalCode"),
+		revenue, (String) dataType.get("Phone"), (String) dataType.get("Street"), (String) dataType.get("PostalCode"),
 		  (String) dataType.get("City"), (String) dataType.get("Country"), (String) dataType.get("CompanyName"),
 		   (String)dataType.get("CreatedDate"), (String) dataType.get("State"));
 		

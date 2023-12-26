@@ -45,9 +45,11 @@ public class MarcController {
     			 return vcrm.findLeads((double) dataMap.get("lowAnnualRevenue"),
     					(double) dataMap.get("highAnnualRevenue"),
     					(String) dataMap.get("state")) ;
-    			 
-    			default:
-    				break;
+    		case "findLeadsByDate":
+    			return vcrm.findLeadsByDate((String) dataMap.get("startDate"),
+    					(String) dataMap.get("endDate"));
+    		default:
+    			break;
     	}
     	return null;
     

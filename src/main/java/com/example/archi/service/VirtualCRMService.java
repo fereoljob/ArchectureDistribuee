@@ -8,6 +8,6 @@ public interface VirtualCRMService {
 
     List<VirtualLeadDTO> findLeads(double lowAnnualRevenue, double highAnnualRevenue,String state);
 
-    List<VirtualLeadDTO> findLeadsByDate(String startDate, String endDate) throws TException;
+    List<VirtualLeadDTO> findLeadsByDate(String startDate, String endDate);
 
 }
