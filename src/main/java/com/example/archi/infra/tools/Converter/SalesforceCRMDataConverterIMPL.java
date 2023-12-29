@@ -1,5 +1,6 @@
 package com.example.archi.infra.tools.Converter;
 
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
@@ -33,7 +34,7 @@ public class SalesforceCRMDataConverterIMPL implements CRMDataConverter
 		ModelTO model = new ModelTO((String) dataType.get("FirstName"), (String) dataType.get("LastName"),
 		revenue, (String) dataType.get("Phone"), (String) dataType.get("Street"), (String) dataType.get("PostalCode"),
 		  (String) dataType.get("City"), (String) dataType.get("Country"), (String) dataType.get("CompanyName"),
-		   (String)dataType.get("CreatedDate"), (String) dataType.get("State"));
+		   LocalDateTime.parse((String)dataType.get("CreatedDate")), (String) dataType.get("State"));
 		
 		return model;
 	}

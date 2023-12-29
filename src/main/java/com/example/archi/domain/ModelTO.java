@@ -1,6 +1,8 @@
 package com.example.archi.domain;
 
 
+import java.time.LocalDateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -16,7 +18,7 @@ public class ModelTO {
     private String city;
     private String country;
     private String company;
-    private String creationDate;
+    private LocalDateTime creationDate;
     private String state;
     
 

@@ -12,7 +12,7 @@ public class VirtualMapper {
     		
 		    VirtualLeadDTO vLdto = new VirtualLeadDTO(model.getFirstName(), model.getLastName(), model.getAnnualRevenue(),
              model.getPhone(), model.getStreet(), model.getPostalCode(),model.getCity(), model.getCountry(),
-              model.getCompany(), model.getCreationDate(), model.getState(),null);
+              model.getCompany(), model.getCreationDate().toString(), model.getState(),null);
 		return vLdto;
     	
     }
