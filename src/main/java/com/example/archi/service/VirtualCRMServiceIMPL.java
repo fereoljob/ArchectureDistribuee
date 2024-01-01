@@ -7,9 +7,6 @@ import java.util.List;
 import org.apache.thrift.TException;
 import org.springframework.stereotype.Service;
 
-import com.example.archi.infra.tools.CRMClient.CRMClient;
-import com.example.archi.infra.tools.geoLocalisationClient.GeoLocalisationClient;
-
 @Service
 public class VirtualCRMServiceIMPL implements  VirtualCRMService{	
 	

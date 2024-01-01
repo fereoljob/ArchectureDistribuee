@@ -5,6 +5,8 @@ import java.util.Map;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import com.example.archi.service.GeoLocalisationClient;
+
 
 @Component
 public class OpenStreetMapClient implements GeoLocalisationClient {

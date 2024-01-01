@@ -17,6 +17,7 @@ import com.example.archi.domain.ModelTO;
 import com.example.archi.infra.tools.Converter.CRMDataConverter;
 import com.example.archi.infra.tools.thriftService.InternalCRMService;
 import com.example.archi.infra.tools.thriftService.InternalLeadDto;
+import com.example.archi.service.CRMClient;
 @Component
 public class InternalCRMClientConnection implements CRMClient {
     @Autowired

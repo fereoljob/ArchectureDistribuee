@@ -1,4 +1,4 @@
-package com.example.archi.infra.tools.CRMClient;
+package com.example.archi.service;
 
 import java.util.List;
 
