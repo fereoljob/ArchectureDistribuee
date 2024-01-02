@@ -26,18 +26,37 @@ public class SalesforceCRMDataConverterIMPL implements CRMDataConverter
         ZonedDateTime zonedDateTime = ZonedDateTime.parse(strDate, formatter);
         
         double revenue = -1;
+        String street = "";
+        String city ="";
+        String country = "";
+        String postalCode = "";
+        
+        //Suite de conditions pour traiter les paramètres ayant besoin d'être uniformisés pour le reste de l'application 
         if(dataType.get("AnnualRevenue")!=null) {
         	revenue = (double)dataType.get("AnnualRevenue");
         }
-		
+        if(dataType.get("Street")!=null) {
+        	street = (String)dataType.get("Street");
+        }
+        if(dataType.get("City")!=null) {
+        	city = (String)dataType.get("City");
+        }
+        if(dataType.get("Country")!=null) {
+        	country = (String)dataType.get("Country");
+        }
+        if(dataType.get("PostalCode")!=null) {
+        	postalCode = (String)dataType.get("PostalCode");
+        }
+      
+      
+
 		ModelTO model = new ModelTO((String) dataType.get("FirstName"), (String) dataType.get("LastName"),
-		revenue, (String) dataType.get("Phone"), (String) dataType.get("Street"), (String) dataType.get("PostalCode"),
-		  (String) dataType.get("City"), (String) dataType.get("Country"), (String) dataType.get("Company"),
-		   (String)dataType.get("CreatedDate"), (String) dataType.get("State"));
-		
+		revenue, (String) dataType.get("Phone"), street, postalCode,city, country
+		, (String) dataType.get("Company"),(String)dataType.get("CreatedDate"), (String) dataType.get("State"));
 		return model;
 	}
 
+	
 	
 
 }

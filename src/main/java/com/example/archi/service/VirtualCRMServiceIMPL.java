@@ -2,6 +2,7 @@ package com.example.archi.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.thrift.TException;
@@ -25,11 +26,14 @@ public class VirtualCRMServiceIMPL implements  VirtualCRMService{
 
 		}
 		for(VirtualLeadDTO cli : listClientDto) {
-			String address = cli.getStreet() + " " + cli.getCity() + " " + cli.getCountry();
+			String address = cli.getStreet() + " " + cli.getCity() + " " + cli.getCountry() + " " 
+							+ cli.getPostalCode();
 			VirtualMapper.searchForCoordinates(cli, geoClient.extractLongAndLat(address));
 			
 		}
-		
+	    Collections.sort(listClientDto, (dto1, dto2) -> Double.compare(dto2.getAnnualRevenue(),
+	    																dto1.getAnnualRevenue()));
+
 		return listClientDto;
 	}
 
