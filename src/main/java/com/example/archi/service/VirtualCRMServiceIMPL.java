@@ -28,7 +28,7 @@ public class VirtualCRMServiceIMPL implements  VirtualCRMService{
 		for(VirtualLeadDTO cli : listClientDto) {
 			String address = cli.getStreet() + " " + cli.getCity() + " " + cli.getCountry() + " " 
 							+ cli.getPostalCode();
-			VirtualMapper.searchForCoordinates(cli, geoClient.extractLongAndLat(address));
+			cli.setGeo( geoClient.extractLongAndLat(address));
 			
 		}
 	    Collections.sort(listClientDto, (dto1, dto2) -> Double.compare(dto2.getAnnualRevenue(),
@@ -47,7 +47,7 @@ public class VirtualCRMServiceIMPL implements  VirtualCRMService{
 		}
 		for(VirtualLeadDTO cli : listClientDto) {
 			String address = cli.getStreet() + " " + cli.getCity() + " " + cli.getCountry();
-			VirtualMapper.searchForCoordinates(cli, geoClient.extractLongAndLat(address));
+			cli.setGeo( geoClient.extractLongAndLat(address));
 			
 		}
 

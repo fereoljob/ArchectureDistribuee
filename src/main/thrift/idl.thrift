@@ -1,17 +1,16 @@
 namespace java com.example.archi.infra.tools.thriftService
 
 struct InternalLeadDto {
-    1: string firstName
-    2: string lastName
-    3: double annualRevenue
-    4: string phone
-    5: string street
-    6: string postalCode
-    7: string city
-    8: string country
-    9: string creationDate
-    10: string company
-    11: string state
+    1: string name
+    2: double annualRevenue
+    3: string phone
+    4: string street
+    5: string postalCode
+    6: string city
+    7: string country
+    8: string creationDate
+    9: string company
+    10: string state
 }
 
 service InternalCRMService {

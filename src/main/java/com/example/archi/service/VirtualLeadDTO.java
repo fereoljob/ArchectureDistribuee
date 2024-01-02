@@ -1,5 +1,7 @@
 package com.example.archi.service;
 
+import java.time.LocalDateTime;
+
 import com.example.archi.infra.tools.geoLocalisationClient.GeographicPointTO;
 
 import lombok.AllArgsConstructor;
@@ -19,7 +21,7 @@ public class VirtualLeadDTO {
     private String city;
     private String country;
     private String company;
-    private String creationDate;
+    private LocalDateTime creationDate;
     private String state;
 	private GeographicPointTO geo;
     

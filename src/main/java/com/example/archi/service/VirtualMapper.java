@@ -17,16 +17,8 @@ public class VirtualMapper {
     	
     }
   
-    public static VirtualLeadDTO  searchForCoordinates(VirtualLeadDTO vLdto, GeographicPointTO geo) {
-    	vLdto.setGeo(geo);
-		return vLdto;
-		
-	   
+   
 	
 }
     
-    
-
-    
-}
 

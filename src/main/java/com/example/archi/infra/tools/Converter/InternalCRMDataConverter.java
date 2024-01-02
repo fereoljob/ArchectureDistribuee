@@ -1,5 +1,7 @@
 package com.example.archi.infra.tools.Converter;
 
+import java.time.LocalDateTime;
+
 import org.springframework.stereotype.Component;
 
 import com.example.archi.domain.ModelTO;
@@ -9,9 +11,9 @@ public class InternalCRMDataConverter implements CRMDataConverter<InternalLeadDt
 
     @Override
     public ModelTO convertDatas(InternalLeadDto dataType) {
-        ModelTO model = new ModelTO(dataType.getFirstName(), dataType.getLastName(),
-         dataType.getAnnualRevenue(), dataType.getPhone(), dataType.getStreet(), dataType.getPostalCode(),
-          dataType.getCity(), dataType.getCountry(), dataType.getCompany(), dataType.getCreationDate(), dataType.getState());
+        String[] tab = dataType.getName().split(";");
+        ModelTO model = new ModelTO(tab[0],tab[1],dataType.getAnnualRevenue(), dataType.getPhone(), dataType.getStreet(), dataType.getPostalCode(),
+          dataType.getCity(), dataType.getCountry(), dataType.getCompany(), LocalDateTime.parse(dataType.getCreationDate()), dataType.getState());
         return model;
     }
     
