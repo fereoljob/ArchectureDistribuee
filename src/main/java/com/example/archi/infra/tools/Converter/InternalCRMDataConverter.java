@@ -11,7 +11,7 @@ public class InternalCRMDataConverter implements CRMDataConverter<InternalLeadDt
 
     @Override
     public ModelTO convertDatas(InternalLeadDto dataType) {
-        String[] tab = dataType.getName().split(";");
+        String[] tab = dataType.getName().split(",");
         ModelTO model = new ModelTO(tab[0],tab[1],dataType.getAnnualRevenue(), dataType.getPhone(), dataType.getStreet(), dataType.getPostalCode(),
           dataType.getCity(), dataType.getCountry(), dataType.getCompany(), LocalDateTime.parse(dataType.getCreationDate()), dataType.getState());
         return model;
