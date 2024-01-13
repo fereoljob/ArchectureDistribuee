@@ -66,9 +66,8 @@ public class SalesforceCRMClientConnection implements CRMClient {
 	                .header("Accept", "application/json")
 	                .header("Content-Type", "application/x-www-form-urlencoded")
 	                .build();
-
 	        HttpResponse<String> response = httpClient.send(request, BodyHandlers.ofString());
-
+	        System.out.println(request+data);
 	        if (response.statusCode() != 200) {
 	            throw new RuntimeException("Failed : HTTP error code : " + response.statusCode());
 	        }
@@ -209,7 +208,7 @@ public class SalesforceCRMClientConnection implements CRMClient {
 				e.printStackTrace();
 				
 			}
-			
+			CONNECTION_ATTEMPTED = false;
 			ObjectMapper mapper = new ObjectMapper();
 			try {
 
