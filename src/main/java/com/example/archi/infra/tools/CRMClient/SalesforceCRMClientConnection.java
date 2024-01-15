@@ -41,13 +41,12 @@ public class SalesforceCRMClientConnection implements CRMClient {
 
     private final HttpClient httpClient = HttpClient.newHttpClient();
     private static boolean CONNECTION_ATTEMPTED = false;
-	@Autowired
-	@Qualifier("salesforceConverter")
 	private CRMDataConverter<Map<String, Object>> converter;
 	
-	 public SalesforceCRMClientConnection() throws Exception {
-		 this.config = SalesforceJSONHandler.loadConfig("jsonFiles/SalesforceUser.json");
+	 public SalesforceCRMClientConnection(SalesforceJSONHandler config,@Qualifier("salesforceConverter") CRMDataConverter<Map<String,Object>> converter) throws Exception {
 		 this.tokenAccess = null;
+		 this.converter = converter;
+		 this.config = config;
 		 this.login();
 	 }
 	 

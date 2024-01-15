@@ -1,22 +1,21 @@
 package com.example.archi.infra.tools;
 
-import java.io.IOException;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import java.io.File;
-
+import lombok.Getter;
+import lombok.Setter;
+@ConfigurationProperties(prefix = "salesforceuser")
+@Getter
+@Setter
 public class SalesforceJSONHandler {
 	
 	 	private String CLIENT_ID;
 	    private String CLIENT_SECRET;
-	    private String SECURITY_TOKEN;
+	    private String SECURITY;
 	    private String USERNAME;
 	    private String PASSWORD;
-	    
 
-	    public static SalesforceJSONHandler loadConfig(String filePath) throws IOException {
+	    /*public static SalesforceJSONHandler loadConfig(String filePath) throws IOException {
 	        ObjectMapper objectMapper = new ObjectMapper();
 	        JsonNode rootNode = objectMapper.readTree(new File(filePath));
 	        ObjectNode configNode = (ObjectNode) rootNode;
@@ -50,7 +49,7 @@ public class SalesforceJSONHandler {
 
 	    public String getSECURITY_TOKEN() {
 	        return SECURITY_TOKEN;
-	    }
+	    }*/
 
 	  
 
