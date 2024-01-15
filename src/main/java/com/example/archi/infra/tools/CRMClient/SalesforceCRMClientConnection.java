@@ -142,9 +142,14 @@ public class SalesforceCRMClientConnection implements CRMClient {
 		public List<ModelTO> findLeads(double lowAnnualRevenue, double highAnnualRevenue, String state) {
 			// TODO Auto-generated method stub
 			
+			String formattedLowRevenue = String.format("%.2f", lowAnnualRevenue);
+			formattedLowRevenue = formattedLowRevenue.replace(",", ".");
+
+			String formattedHighRevenue = String.format("%.2f", highAnnualRevenue);
+			formattedHighRevenue = formattedHighRevenue.replace(",", ".");
 		    String query = "SELECT FirstName,LastName,Email,Phone,CreatedDate,Street,City,State,PostalCode,Country,Company,AnnualRevenue " +
 		                   "FROM Lead " +
-		                   "WHERE (AnnualRevenue >= " + lowAnnualRevenue + " AND AnnualRevenue <= " + highAnnualRevenue+")";
+		                   "WHERE (AnnualRevenue >= " + formattedLowRevenue + " AND AnnualRevenue <= " + formattedHighRevenue+")";
 		   if(!state.equals("") && !state.equals(null)) {
 			   query += " AND State = '"+state+"'";
 		   }
