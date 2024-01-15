@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.archi.domain.ModelTO;
 import com.example.archi.infra.tools.SalesforceJSONHandler;
-import com.example.archi.infra.tools.Converter.CRMDataConverter;
+import com.example.archi.infra.tools.converter.CRMDataConverter;
 import com.example.archi.service.CRMClient;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

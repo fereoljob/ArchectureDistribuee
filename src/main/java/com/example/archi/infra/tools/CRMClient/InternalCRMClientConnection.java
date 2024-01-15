@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.example.archi.domain.ModelTO;
-import com.example.archi.infra.tools.Converter.CRMDataConverter;
+import com.example.archi.infra.tools.converter.CRMDataConverter;
 import com.example.archi.infra.tools.thriftService.InternalCRMService;
 import com.example.archi.infra.tools.thriftService.InternalLeadDto;
 import com.example.archi.service.CRMClient;

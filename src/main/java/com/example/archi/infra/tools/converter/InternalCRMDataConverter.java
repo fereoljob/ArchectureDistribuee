@@ -1,4 +1,4 @@
-package com.example.archi.infra.tools.Converter;
+package com.example.archi.infra.tools.converter;
 
 import java.time.LocalDateTime;
 
